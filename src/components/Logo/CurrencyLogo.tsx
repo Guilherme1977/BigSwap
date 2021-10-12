@@ -39,5 +39,12 @@ export default function CurrencyLogo({
     return <BinanceIcon width={size} style={style} />
   }
 
+  if (currency instanceof Token) {
+    if (currency instanceof WrappedTokenInfo && currency.address.toLowerCase() === '0xc1cd1fc18fe1ec87a24f2858cac493cca86632c6') {
+      return <StyledLogo size={size} srcs={['/logo.png']} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
+    }
+  }
+
+
   return <StyledLogo size={size} srcs={srcs} alt={`${currency?.symbol ?? 'token'} logo`} style={style} />
 }
