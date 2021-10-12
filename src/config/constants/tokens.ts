@@ -91,6 +91,14 @@ export const mainnetTokens = {
     'Binance BTC',
     'https://bitcoin.org/',
   ),
+  bbc: new Token(
+    MAINNET,
+    '0xc1cd1fc18fe1ec87a24f2858cac493cca86632c6',
+    18,
+    'BBC',
+    'BB Coin',
+    'https://bbpay.io/',
+  ),
   ust: new Token(
     MAINNET,
     '0x23396cF899Ca06c4472205fC903bDB4de249D6fC',
