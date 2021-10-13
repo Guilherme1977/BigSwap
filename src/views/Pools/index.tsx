@@ -106,13 +106,10 @@ const Pools: React.FC = () => {
   const performanceFeeAsDecimal = performanceFee && performanceFee / 100
 
   const pools = useMemo(() => {
-    const cakePool = poolsWithoutAutoVault.find((pool) => pool.sousId === 0)
+    // const cakePool = poolsWithoutAutoVault.find((pool) => pool.sousId === 0)
     // const cakeAutoVault = { ...cakePool, isAutoVault: true }
     return [ ...poolsWithoutAutoVault]
   }, [poolsWithoutAutoVault])
-
-
-  console.log('pools:',pools,poolsWithoutAutoVault)
 
   // TODO aren't arrays in dep array checked just by reference, i.e. it will rerender every time reference changes?
   const [finishedPools, openPools] = useMemo(() => partition(pools, (pool) => pool.isFinished), [pools])
@@ -239,6 +236,7 @@ const Pools: React.FC = () => {
 
   chosenPools = sortPools(chosenPools).slice(0, numberOfPoolsVisible)
   chosenPoolsLength.current = chosenPools.length
+
 
   const cardLayout = (
     <CardLayout>
