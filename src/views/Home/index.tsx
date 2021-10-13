@@ -50,8 +50,8 @@ const Home: React.FC = () => {
 
   return (
     <>
-      {/* <PageMeta /> */}
-      {/* <StyledHeroSection
+      <PageMeta />
+      <StyledHeroSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
           theme.isDark
@@ -61,21 +61,21 @@ const Home: React.FC = () => {
         index={2}
         hasCurvedDivider={false}
       >
-        {account && (
+        {/* {account && (
           <UserBannerWrapper>
             <UserBanner />
           </UserBannerWrapper>
-        )}
-        <Flex
+        )} */}
+        {/* <Flex
           pt={[account ? '220px' : '0', null, null, account ? '76px' : '0']}
           mt={[account ? '0' : '-16px', null, null, account ? '0' : '-48px']}
           pb="24px"
         >
           <PancakeSquadBanner />
-        </Flex>
+        </Flex> */}
         <Hero />
-      </StyledHeroSection> */}
-      {/* <PageSection
+      </StyledHeroSection>
+      <PageSection
         innerProps={{ style: { margin: '0', width: '100%' } }}
         background={
           theme.isDark
@@ -86,7 +86,7 @@ const Home: React.FC = () => {
         hasCurvedDivider={false}
       >
         <MetricsSection />
-      </PageSection> */}
+      </PageSection>
       {/* <PageSection
         innerProps={{ style: HomeSectionContainerStyles }}
         background={theme.colors.background}
