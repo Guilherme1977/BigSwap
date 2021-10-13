@@ -10,6 +10,7 @@ import fetchTokenChartData from 'state/info/queries/tokens/chartData'
 import fetchTokenTransactions from 'state/info/queries/tokens/transactions'
 import fetchTokenPriceData from 'state/info/queries/tokens/priceData'
 import fetchPoolsForToken from 'state/info/queries/tokens/poolsForToken'
+import { BBC_ADDRESS } from 'config/constants'
 import {
   updateProtocolData,
   updateProtocolChartData,
