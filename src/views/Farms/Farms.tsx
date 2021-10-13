@@ -293,9 +293,11 @@ const Farms: React.FC = () => {
     return row
   })
 
-  console.log('chosenFarmsMemoized:',chosenFarmsMemoized)
-
   const renderContent = (): JSX.Element => {
+
+    console.log('Farmpage:',chosenFarmsMemoized,rowData)
+
+
     if (viewMode === ViewMode.TABLE && rowData.length) {
       const columnSchema = DesktopColumnSchema
 
@@ -324,6 +326,8 @@ const Farms: React.FC = () => {
 
       return <Table data={rowData} columns={columns} userDataReady={userDataReady} />
     }
+
+
 
     return (
       <FlexLayout>

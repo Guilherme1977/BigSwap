@@ -92,15 +92,15 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
 
   let symbol1 = poolData?.token1.symbol;
 
-    if (poolData) {
-      if (poolData?.token0?.address.toLowerCase() === BBC_ADDRESS) {
-        symbol0 = 'BBC'
-      }
-
-      if (poolData?.token1?.address.toLowerCase() === BBC_ADDRESS) {
-        symbol1 = 'BBC'
-      }
+  if (poolData) {
+    if (poolData?.token0?.address.toLowerCase() === BBC_ADDRESS) {
+      symbol0 = 'BBC'
     }
+
+    if (poolData?.token1?.address.toLowerCase() === BBC_ADDRESS) {
+      symbol1 = 'BBC'
+    }
+  }
 
 
 
