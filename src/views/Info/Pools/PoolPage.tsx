@@ -29,6 +29,7 @@ import TransactionTable from 'views/Info/components/InfoTables/TransactionsTable
 import { useWatchlistPools } from 'state/user/hooks'
 import { useTranslation } from 'contexts/Localization'
 import ChartCard from 'views/Info/components/InfoCharts/ChartCard'
+import { BBC_ADDRESS } from 'config/constants'
 
 const ContentLayout = styled.div`
   display: grid;
@@ -86,10 +87,41 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
   const chartData = usePoolChartData(address)
   const transactions = usePoolTransactions(address)
 
+
+  // console.log('PoolPage:', poolData)
+  // poolData = poolData1
+  // if (poolData) {
+  //   if (poolData?.token0?.address.toLowerCase() === BBC_ADDRESS) {
+  //     poolData.token0.symbol = 'BBC'
+  //     poolData.token0.name = 'BB Coin'
+  //   }
+
+  //   if (poolData?.token1?.address.toLowerCase() === BBC_ADDRESS) {
+  //     poolData.token1.symbol = 'BBC'
+  //     poolData.token1.name = 'BB Coin'
+  //   }
+  // }
+
+  let symbol0 = poolData?.token0.symbol;
+
+  let symbol1 = poolData?.token1.symbol;
+
+    if (poolData) {
+      if (poolData?.token0?.address.toLowerCase() === BBC_ADDRESS) {
+        symbol0 = 'BBC'
+      }
+
+      if (poolData?.token1?.address.toLowerCase() === BBC_ADDRESS) {
+        symbol1 = 'BBC'
+      }
+    }
+
+
+
   const [watchlistPools, addPoolToWatchlist] = useWatchlistPools()
 
   return (
-    <Page symbol={poolData ? `${poolData?.token0.symbol} / ${poolData?.token1.symbol}` : null}>
+    <Page symbol={poolData ? `${symbol0} / ${symbol1}` : null}>
       {poolData ? (
         <>
           <Flex justifyContent="space-between" mb="16px" flexDirection={['column', 'column', 'row']}>
@@ -101,7 +133,7 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                 <Text color="primary">{t('Pools')}</Text>
               </Link>
               <Flex>
-                <Text mr="8px">{`${poolData.token0.symbol} / ${poolData.token1.symbol}`}</Text>
+                <Text mr="8px">{`${symbol0} / ${symbol1}`}</Text>
               </Flex>
             </Breadcrumbs>
             <Flex justifyContent={[null, null, 'flex-end']} mt={['8px', '8px', 0]}>
@@ -119,7 +151,7 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                 bold
                 fontSize={isXs || isSm ? '24px' : '40px'}
                 id="info-pool-pair-title"
-              >{`${poolData.token0.symbol} / ${poolData.token1.symbol}`}</Text>
+              >{`${symbol0} / ${symbol1}`}</Text>
             </Flex>
             <Flex justifyContent="space-between" flexDirection={['column', 'column', 'column', 'row']}>
               <Flex flexDirection={['column', 'column', 'row']} mb={['8px', '8px', null]}>

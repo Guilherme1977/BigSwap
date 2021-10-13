@@ -1,3 +1,4 @@
+import { BBC_ADDRESS } from 'config/constants'
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 import { isAddress } from 'utils'
@@ -19,6 +20,10 @@ export const CurrencyLogo: React.FC<{
   const src = useMemo(() => {
     const checksummedAddress = isAddress(address)
     if (checksummedAddress) {
+
+      if(checksummedAddress.toLowerCase() === BBC_ADDRESS){
+        return '/logo.png'
+      }
       return `https://assets.trustwalletapp.com/blockchains/smartchain/assets/${checksummedAddress}/logo.png`
     }
     return null
