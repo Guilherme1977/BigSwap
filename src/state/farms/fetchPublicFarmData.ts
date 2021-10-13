@@ -89,9 +89,6 @@ const fetchFarm = async (farm: SerializedFarm): Promise<PublicFarmData> => {
   const allocPoint = info ? new BigNumber(info.allocPoint?._hex) : BIG_ZERO
   const poolWeight = totalAllocPoint ? allocPoint.div(new BigNumber(totalAllocPoint)) : BIG_ZERO
 
-
-  console.log('fetchFarm:',allocPoint.toString(),poolWeight.toString(),lpTotalSupply)
-
   return {
     tokenAmountTotal: tokenAmountTotal.toJSON(),
     lpTotalSupply: new BigNumber(lpTotalSupply).toJSON(),
