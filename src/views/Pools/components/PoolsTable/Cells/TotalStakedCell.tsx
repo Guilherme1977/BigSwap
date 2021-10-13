@@ -22,13 +22,15 @@ const TotalStakedCell: React.FC<TotalStakedCellProps> = ({ pool }) => {
   const { sousId, stakingToken, totalStaked, isAutoVault } = pool
   const { totalCakeInVault } = useCakeVault()
 
+
+
   const isManualCakePool = sousId === 0
 
   const totalStakedBalance = useMemo(() => {
     if (isAutoVault) {
       return getBalanceNumber(totalCakeInVault, stakingToken.decimals)
     }
-    if (isManualCakePool) {
+    if (isManualCakePool && !totalCakeInVault.isFinite()  && !totalCakeInVault.isNaN()) {
       const manualCakeTotalMinusAutoVault = new BigNumber(totalStaked).minus(totalCakeInVault)
       return getBalanceNumber(manualCakeTotalMinusAutoVault, stakingToken.decimals)
     }
