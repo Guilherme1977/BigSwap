@@ -88,20 +88,6 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
   const transactions = usePoolTransactions(address)
 
 
-  // console.log('PoolPage:', poolData)
-  // poolData = poolData1
-  // if (poolData) {
-  //   if (poolData?.token0?.address.toLowerCase() === BBC_ADDRESS) {
-  //     poolData.token0.symbol = 'BBC'
-  //     poolData.token0.name = 'BB Coin'
-  //   }
-
-  //   if (poolData?.token1?.address.toLowerCase() === BBC_ADDRESS) {
-  //     poolData.token1.symbol = 'BBC'
-  //     poolData.token1.name = 'BB Coin'
-  //   }
-  // }
-
   let symbol0 = poolData?.token0.symbol;
 
   let symbol1 = poolData?.token1.symbol;
@@ -159,11 +145,11 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                   <TokenButton>
                     <CurrencyLogo address={poolData.token0.address} size="24px" />
                     <Text fontSize="16px" ml="4px" style={{ whiteSpace: 'nowrap' }} width="fit-content">
-                      {`1 ${poolData.token0.symbol} =  ${formatAmount(poolData.token1Price, {
+                      {`1 ${symbol0} =  ${formatAmount(poolData.token1Price, {
                         notation: 'standard',
                         displayThreshold: 0.001,
                         tokenPrecision: true,
-                      })} ${poolData.token1.symbol}`}
+                      })} ${symbol1}`}
                     </Text>
                   </TokenButton>
                 </Link>
@@ -171,11 +157,11 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                   <TokenButton ml={[null, null, '10px']}>
                     <CurrencyLogo address={poolData.token1.address} size="24px" />
                     <Text fontSize="16px" ml="4px" style={{ whiteSpace: 'nowrap' }} width="fit-content">
-                      {`1 ${poolData.token1.symbol} =  ${formatAmount(poolData.token0Price, {
+                      {`1 ${symbol1} =  ${formatAmount(poolData.token0Price, {
                         notation: 'standard',
                         displayThreshold: 0.001,
                         tokenPrecision: true,
-                      })} ${poolData.token0.symbol}`}
+                      })} ${symbol0}`}
                     </Text>
                   </TokenButton>
                 </Link>
@@ -232,7 +218,7 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                       <Flex>
                         <CurrencyLogo address={poolData.token0.address} size="24px" />
                         <Text small color="textSubtle" ml="8px">
-                          {poolData.token0.symbol}
+                          {symbol0}
                         </Text>
                       </Flex>
                       <Text small>{formatAmount(poolData.liquidityToken0)}</Text>
@@ -241,7 +227,7 @@ const PoolPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                       <Flex>
                         <CurrencyLogo address={poolData.token1.address} size="24px" />
                         <Text small color="textSubtle" ml="8px">
-                          {poolData.token1.symbol}
+                          {symbol1}
                         </Text>
                       </Flex>
                       <Text small>{formatAmount(poolData.liquidityToken1)}</Text>

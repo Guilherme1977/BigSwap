@@ -10,7 +10,9 @@ import truncateHash from 'utils/truncateHash'
 import { Transaction, TransactionType } from 'state/info/types'
 import { ITEMS_PER_INFO_TABLE_PAGE } from 'config/constants/info'
 import { useTranslation } from 'contexts/Localization'
+import { BBC_ADDRESS } from 'config/constants'
 import { ClickableColumnHeader, TableWrapper, PageButtons, Arrow, Break } from './shared'
+
 
 const Wrapper = styled.div`
   width: 100%;
@@ -99,6 +101,20 @@ const DataRow: React.FC<{ transaction: Transaction }> = ({ transaction }) => {
   const outputTokenSymbol = transaction.amountToken0 < 0 ? transaction.token0Symbol : transaction.token1Symbol
   const inputTokenSymbol = transaction.amountToken1 < 0 ? transaction.token0Symbol : transaction.token1Symbol
 
+  console.log('transatui:',transaction)
+
+  let symbol0 = transaction?.token0Symbol
+
+  let symbol1 = transaction?.token1Symbol
+
+  if(transaction && transaction?.token0Address.toLowerCase() === BBC_ADDRESS){
+    symbol0 = 'BBC'
+  }
+
+  if(transaction && transaction?.token1Address.toLowerCase() === BBC_ADDRESS){
+    symbol1 = 'BBC'
+  }
+
   return (
     <ResponsiveGrid>
       <LinkExternal href={getBscScanLink(transaction.hash, 'transaction')}>
@@ -112,10 +128,10 @@ const DataRow: React.FC<{ transaction: Transaction }> = ({ transaction }) => {
       </LinkExternal>
       <Text>${formatAmount(transaction.amountUSD)}</Text>
       <Text>
-        <Text>{`${formatAmount(abs0)} ${transaction.token0Symbol}`}</Text>
+        <Text>{`${formatAmount(abs0)} ${symbol0}`}</Text>
       </Text>
       <Text>
-        <Text>{`${formatAmount(abs1)} ${transaction.token1Symbol}`}</Text>
+        <Text>{`${formatAmount(abs1)} ${symbol1}`}</Text>
       </Text>
       <LinkExternal href={getBscScanLink(transaction.sender, 'address')}>
         {truncateHash(transaction.sender)}
