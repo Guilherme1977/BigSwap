@@ -39,6 +39,7 @@ import { useWatchlistTokens } from 'state/user/hooks'
 import { ONE_HOUR_SECONDS } from 'config/constants/info'
 import { useTranslation } from 'contexts/Localization'
 import ChartCard from 'views/Info/components/InfoCharts/ChartCard'
+import { BBC_ADDRESS } from 'config/constants'
 
 const ContentLayout = styled.div`
   margin-top: 16px;
@@ -107,8 +108,19 @@ const TokenPage: React.FC<RouteComponentProps<{ address: string }>> = ({
 
   const [watchlistTokens, addWatchlistToken] = useWatchlistTokens()
 
+  let symbol = tokenData?.symbol;
+
+  let name = tokenData?.name;
+
+  if (tokenData) {
+    if (tokenData?.address.toLowerCase() === BBC_ADDRESS) {
+      name = 'BB Coin'
+      symbol = 'BBC'
+    }
+  }
+
   return (
-    <Page symbol={tokenData?.symbol}>
+    <Page symbol={symbol}>
       {tokenData ? (
         !tokenData.exists ? (
           <Card>
@@ -133,7 +145,7 @@ const TokenPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                   <Text color="primary">{t('Tokens')}</Text>
                 </Link>
                 <Flex>
-                  <Text mr="8px">{tokenData.symbol}</Text>
+                  <Text mr="8px">{symbol}</Text>
                   <Text>{`(${truncateHash(address)})`}</Text>
                 </Flex>
               </Breadcrumbs>
@@ -160,10 +172,10 @@ const TokenPage: React.FC<RouteComponentProps<{ address: string }>> = ({
                     fontSize={isXs || isSm ? '24px' : '40px'}
                     id="info-token-name-title"
                   >
-                    {tokenData.name}
+                    {name}
                   </Text>
                   <Text ml="12px" lineHeight="1" color="textSubtle" fontSize={isXs || isSm ? '14px' : '20px'}>
-                    ({tokenData.symbol})
+                    ({symbol})
                   </Text>
                 </Flex>
                 <Flex mt="8px" ml="46px" alignItems="center">
