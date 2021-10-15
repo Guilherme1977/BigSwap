@@ -295,9 +295,6 @@ const Farms: React.FC = () => {
 
   const renderContent = (): JSX.Element => {
 
-    console.log('Farmpage:',chosenFarmsMemoized,rowData)
-
-
     if (viewMode === ViewMode.TABLE && rowData.length) {
       const columnSchema = DesktopColumnSchema
 
