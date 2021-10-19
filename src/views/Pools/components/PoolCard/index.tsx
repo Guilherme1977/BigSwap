@@ -17,8 +17,6 @@ const PoolCard: React.FC<{ pool: DeserializedPool; account: string }> = ({ pool,
   const stakedBalance = userData?.stakedBalance ? new BigNumber(userData.stakedBalance) : BIG_ZERO
   const accountHasStakedBalance = stakedBalance.gt(0)
 
-  console.log('PoolCard:',pool)
-
   return (
     <StyledCard
       isFinished={isFinished && sousId !== 0}

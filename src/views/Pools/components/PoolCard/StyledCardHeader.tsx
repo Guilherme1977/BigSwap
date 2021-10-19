@@ -23,8 +23,6 @@ const StyledCardHeader: React.FC<{
   const isCakePool = earningToken.symbol === 'BBC' && stakingToken.symbol === 'BBC'
   const background = isStaking ? 'bubblegum' : 'cardHeader'
 
-  console.log('StyledCardHeader:',earningToken,stakingToken)
-
   const getHeadingPrefix = () => {
     if (isAutoVault) {
       // vault
