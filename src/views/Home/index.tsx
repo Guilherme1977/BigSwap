@@ -6,6 +6,10 @@ import { useWeb3React } from '@web3-react/core'
 import useTheme from 'hooks/useTheme'
 import Container from 'components/Layout/Container'
 import { PageMeta } from 'components/Layout/Page'
+import { useDefaultsFromURLSearch } from 'state/swap/hooks'
+import { useParams } from 'react-router'
+import { isAddress } from 'utils'
+import { referreKey } from 'config/constants'
 import Hero from './components/Hero'
 import { swapSectionData, earnSectionData, cakeSectionData } from './components/SalesSection/data'
 import MetricsSection from './components/MetricsSection'
@@ -17,6 +21,9 @@ import CakeDataRow from './components/CakeDataRow'
 import { WedgeTopLeft, InnerWedgeWrapper, OuterWedgeWrapper, WedgeTopRight } from './components/WedgeSvgs'
 import UserBanner from './components/UserBanner'
 import PancakeSquadBanner from './components/Banners/PancakeSquadBanner'
+
+
+
 
 const StyledHeroSection = styled(PageSection)`
   padding-top: 16px;
@@ -45,6 +52,31 @@ const UserBannerWrapper = styled(Container)`
 const Home: React.FC = () => {
   const { theme } = useTheme()
   const { account } = useWeb3React()
+
+  const { ref }: { ref: string } = useParams()
+
+
+  
+  if(ref && ref.length  > 10 && ref.split('=').length > 0  ){
+    const referrer = ref.split('=')?.[1]
+    console.log('loadedUrlParams:', ref,referrer)
+    if(isAddress(referrer)){
+      localStorage.setItem(referreKey,referrer)
+    }
+  }
+
+
+
+  //   const {
+  //   location,
+  //   location: { search },
+  //   match: {
+  //     params: { ref },
+  //   },
+  // } = props
+
+  // console.log('RefPage:',id,ref)
+
 
   const HomeSectionContainerStyles = { margin: '0', width: '100%', maxWidth: '968px' }
 
