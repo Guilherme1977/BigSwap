@@ -54,6 +54,7 @@ const Info = lazy(() => import('./views/Info'))
 const NftMarket = lazy(() => import('./views/Nft/market'))
 const ProfileCreation = lazy(() => import('./views/ProfileCreation'))
 const PancakeSquad = lazy(() => import('./views/PancakeSquad'))
+const Referral = lazy(() => import('./views/Referral'))
 
 // This config is required for number formatting
 BigNumber.config({
@@ -82,6 +83,9 @@ const App: React.FC = () => {
             {/* <Route exact strict path="/" component={Swap} /> */}
             <Route path="/" exact>
               <Home />
+            </Route>
+            <Route path="/referral" exact>
+              <Referral />
             </Route>
             <Route exact path="/farms/auction">
               <FarmAuction />
