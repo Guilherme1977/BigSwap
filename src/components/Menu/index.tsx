@@ -22,17 +22,9 @@ const Menu = (props) => {
   const { currentLanguage, setLanguage, t } = useTranslation()
   const { pathname } = useLocation()
 
-  // pricing data
-  // const priceData = useTokenPriceData(address, ONE_HOUR_SECONDS, DEFAULT_TIME_WINDOW)useTokenData
-
-  const bbcPriceData = useTokenPriceData(BBC_ADDRESS, ONE_HOUR_SECONDS, DEFAULT_TIME_WINDOW)
-
-  const tokenData = useTokenData(BBC_ADDRESS)
-
-  const bbcPrice = bbcPriceData ? bbcPriceData[bbcPriceData?.length - 1].close * 1e18 : 0;
-
   const activeMenuItem = getActiveMenuItem({ menuConfig: config(t), pathname })
   const activeSubMenuItem = getActiveSubMenuItem({ menuItem: activeMenuItem, pathname })
+
 
   return (
     <UikitMenu
@@ -43,7 +35,7 @@ const Menu = (props) => {
       currentLang={currentLanguage.code}
       langs={languageList}
       setLang={setLanguage}
-      cakePriceUsd={bbcPrice}
+      cakePriceUsd={cakePriceUsd.toNumber()}
       links={config(t)}
       subLinks={activeMenuItem?.hideSubNav ? [] : activeMenuItem?.items}
       footerLinks={footerLinks(t)}
