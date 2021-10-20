@@ -1,12 +1,14 @@
 import React from 'react'
-import { Heading, Flex, Text, Skeleton, ChartIcon, CommunityIcon, SwapIcon } from '@pancakeswap/uikit'
+import { Heading, Flex, Text, Skeleton, ChartIcon, CommunityIcon, SwapIcon, Link } from '@pancakeswap/uikit'
 import { useTranslation } from 'contexts/Localization'
 import { useGetStats } from 'hooks/api'
 import useTheme from 'hooks/useTheme'
+import { Twitter } from 'react-feather'
 import { formatLocalisedCompactNumber } from 'utils/formatBalance'
 import IconCard, { IconCardData } from '../IconCard'
 import StatCardContent from './StatCardContent'
 import GradientLogo from '../GradientLogoSvg'
+
 
 // Values fetched from bitQuery effective 6/9/21
 const txCount = 30841921
@@ -39,7 +41,7 @@ const Stats = () => {
   return (
     <Flex justifyContent="center" alignItems="center" flexDirection="column">
       {/* <GradientLogo height="48px" width="48px" mb="24px" /> */}
-      <img src='/images/home/lunar-bunny/brocket.png' width="100px" height="100px" alt="rocket"/>
+      <img src="/images/home/lunar-bunny/brocket.png" width="100px" height="100px" alt="rocket" />
       <Heading textAlign="center" scale="xl">
         {t('Used by millions.')}
       </Heading>
@@ -61,7 +63,11 @@ const Stats = () => {
         {t('Will you join them?')}
       </Text>
 
-      <Flex flexDirection={['column', null, null, 'row']}>
+      <Link href='https://twitter.com/BigboysCoin' target="_blank" rel="noreferrer noopener" bold={false}>
+        <Twitter/>
+      </Link>
+
+      {/* <Flex flexDirection={['column', null, null, 'row']}>
         <IconCard {...UsersCardData} mr={[null, null, null, '16px']} mb={['16px', null, null, '0']}>
           <StatCardContent
             headingText={t('%users% users', { users })}
@@ -83,7 +89,7 @@ const Stats = () => {
             highlightColor={theme.colors.failure}
           />
         </IconCard>
-      </Flex>
+      </Flex> */}
     </Flex>
   )
 }
