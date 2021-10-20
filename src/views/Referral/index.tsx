@@ -14,7 +14,6 @@ import ConnectWalletButton from 'components/ConnectWalletButton'
 import Page from 'views/Page'
 import CopyLink from './CopyLInk'
 
-
 const Gradient = styled(Box)`
   background: ${({ theme }) => theme.colors.gradients.cardHeader};
 `
@@ -73,6 +72,7 @@ const StyledHeading = styled(Heading)`
   -webkit-text-stroke: 6px transparent;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   margin-bottom: 16px;
+  margin-top:16px;
 `
 
 const Wrapper = styled.div`
@@ -94,7 +94,7 @@ const LeftWrapper = styled(Flex)`
   z-index: 1;
   padding: 24px;
   width: 100%;
-  
+
   flex-direction: column;
   justify-content: center;
 
@@ -128,7 +128,6 @@ const RightWrapper = styled.div`
 `
 
 const Referral = () => {
-
   const { t } = useTranslation()
   const { account } = useWeb3React()
   const { theme } = useTheme()
@@ -139,7 +138,6 @@ const Referral = () => {
 
   return (
     <Page>
-
       <StyledPageHeader>
         <StyledHeaderInner>
           <div>
@@ -156,25 +154,29 @@ const Referral = () => {
         </StyledHeaderInner>
       </StyledPageHeader>
       <PageSection
-        innerProps={{ style: { margin: '0', width: '100%' ,height:'100%'} }}
+        innerProps={{ style: { margin: '0', width: '100%', height: '100%' } }}
         background={theme.colors.background}
         index={1}
         concaveDivider
         dividerPosition="top"
       >
-        {!account && (
-          <Flex mb="24px">
-            <ConnectWalletButton />{' '}
-            <Heading scale="lg" color="text">
-              {t(`Unlock wallet to get your unique referral link`)}
-            </Heading>
-          </Flex>
-        )}
         <Flex mb="24px">
           <Wrapper>
             <Inner>
               <LeftWrapper>
-                <StyledSubheading>Bigboy Referral Link</StyledSubheading>
+                {!account ? (
+                  <Flex mb="24px">
+                    <div>
+                      <ConnectWalletButton />{' '}
+                      <StyledHeading scale="lg" color="text">
+                        {t(`Unlock wallet to get your unique referral link`)}
+                      </StyledHeading>
+                    </div>
+                  </Flex>
+                ) : (
+                  <StyledSubheading>Bigboy Referral Link</StyledSubheading>
+                )}
+
                 {account && <CopyLink link={referralLink} mb="24px" />}
 
                 {/* {account && (
