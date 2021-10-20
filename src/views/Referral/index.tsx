@@ -133,9 +133,9 @@ const Referral = () => {
   const { account } = useWeb3React()
   const { theme } = useTheme()
 
-  const referralLink = `https://bigboyswap.com/ref=${account}`
+  const referralLink = `https://bigboyswap.com/ref/ref=${account}`
 
-  // const referralLink = `http://localhost:3000/ref=${account}`
+  // const referralLink = `http://localhost:3000/ref/ref=${account}`
 
   return (
     <Page>

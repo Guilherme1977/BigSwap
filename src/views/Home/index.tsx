@@ -53,17 +53,16 @@ const Home: React.FC = () => {
   const { theme } = useTheme()
   const { account } = useWeb3React()
 
-  const { ref }: { ref: string } = useParams()
-
+  // const { ref }: { ref: string } = useParams()
 
   
-  if(ref && ref.length  > 10 && ref.split('=').length > 0  ){
-    const referrer = ref.split('=')?.[1]
-    console.log('loadedUrlParams:', ref,referrer)
-    if(isAddress(referrer)){
-      localStorage.setItem(referreKey,referrer)
-    }
-  }
+  // if(ref && ref.length  > 10 && ref.split('=').length > 0  ){
+  //   const referrer = ref.split('=')?.[1]
+  //   console.log('loadedUrlParams:', ref,referrer)
+  //   if(isAddress(referrer)){
+  //     localStorage.setItem(referreKey,referrer)
+  //   }
+  // }
 
 
 
